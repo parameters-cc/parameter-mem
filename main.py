@@ -17,7 +17,6 @@ from schemas import (
 app = FastAPI(title="parameter-mem")
 DB_PATH = os.getenv("PARAMETER_MEM_DB", "parameter_mem.db")
 KV_CATEGORIES = {"memories", "patterns", "anti-patterns"}
-init_db(DB_PATH)
 
 
 @app.on_event("startup")
@@ -96,13 +95,15 @@ def get_fact(subject: str) -> FactSchema:
 
 @app.post("/v1/tasks/{task_id}")
 def create_task(task_id: str, payload: TaskSchema) -> TaskSchema:
-    _ensure_path_matches(task_id, payload.task_id, "task_id")
-    upsert_value("tasks", task_id, payload.model_dump(mode="json"), DB_PATH)
-    return payload
+    return _upsert_task(task_id, payload)
 
 
 @app.put("/v1/tasks/{task_id}")
 def update_task(task_id: str, payload: TaskSchema) -> TaskSchema:
+    return _upsert_task(task_id, payload)
+
+
+def _upsert_task(task_id: str, payload: TaskSchema) -> TaskSchema:
     _ensure_path_matches(task_id, payload.task_id, "task_id")
     upsert_value("tasks", task_id, payload.model_dump(mode="json"), DB_PATH)
     return payload

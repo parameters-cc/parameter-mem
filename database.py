@@ -1,16 +1,31 @@
 import json
 import os
 import sqlite3
+import threading
 from datetime import datetime, timezone
 from typing import Any
 
 
 DEFAULT_DB_PATH = os.getenv("PARAMETER_MEM_DB", "parameter_mem.db")
+_thread_local = threading.local()
+
+
+def _get_thread_connections() -> dict[str, sqlite3.Connection]:
+    connections = getattr(_thread_local, "connections", None)
+    if connections is None:
+        connections = {}
+        _thread_local.connections = connections
+    return connections
 
 
 def _connect(db_path: str = DEFAULT_DB_PATH) -> sqlite3.Connection:
-    conn = sqlite3.connect(db_path, check_same_thread=False)
-    conn.row_factory = sqlite3.Row
+    normalized_path = os.path.abspath(db_path)
+    connections = _get_thread_connections()
+    conn = connections.get(normalized_path)
+    if conn is None:
+        conn = sqlite3.connect(normalized_path)
+        conn.row_factory = sqlite3.Row
+        connections[normalized_path] = conn
     return conn
 
 
