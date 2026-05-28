@@ -639,16 +639,16 @@ Impact: [Potential harm or risk]
 ```
 
 **Contributing Improvements:**
-- Follow the contribution guidelines in CONTRIBUTING.md
-- Submit pull requests with clear descriptions
-- Include tests and documentation
+- Open a GitHub issue or pull request with a clear description and reproduction steps
+- Include tests, examples, or documentation updates when the behavior changes
+- Keep changes scoped to the repository's existing review and release process
 
 ### Support Channels
 
 **Getting Help:**
-- Check the SUPPORT.md file for support options
 - Use GitHub issues for bug reports and feature requests
-- Contact maintainers for urgent issues
+- Use pull request comments for implementation questions and review feedback
+- Contact maintainers through the repository's GitHub presence for urgent issues
 
 **Community Support:**
 - Join community forums and discussions

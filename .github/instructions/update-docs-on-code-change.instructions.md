@@ -216,44 +216,11 @@ If `apply-doc-file-structure == true`, then apply the following configurable ins
 
 ### Standard Documentation Files
 
-Maintain these documentation files and update as needed:
+Maintain the repository's existing documentation files and update them as needed:
 
-- **README.md**: Project overview, quick start, basic usage
-- **CHANGELOG.md**: Version history and user-facing changes
-- **docs/**: Detailed documentation
-  - `installation.md`: Setup and installation guide
-  - `configuration.md`: Configuration options and examples
-  - `api.md`: API reference documentation
-  - `contributing.md`: Contribution guidelines
-  - `migration-guides/`: Version migration guides
-- **examples/**: Working code examples and tutorials
+- **README.md**: Project overview, quick start, and basic usage
 
-### Changelog Management
-
-**Add changelog entries for:**
-
-- New features (under "Added" section)
-- Bug fixes (under "Fixed" section)
-- Breaking changes (under "Changed" section with **BREAKING** prefix)
-- Deprecated features (under "Deprecated" section)
-- Removed features (under "Removed" section)
-- Security fixes (under "Security" section)
-
-**Changelog format:**
-
-    ```markdown
-    ## [Version] - YYYY-MM-DD
-
-    ### Added
-    - New feature description with reference to PR/issue
-
-    ### Changed
-    - **BREAKING**: Description of breaking change
-    - Other changes
-
-    ### Fixed
-    - Bug fix description
-    ```
+If the repository later adds dedicated docs, changelog, or examples folders, update this section to match the real file structure before asking agents to maintain them.
 
 ## Documentation Verification `apply-doc-verification`
 
