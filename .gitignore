@@ -2,3 +2,7 @@ __pycache__/
 *.py[cod]
 *.db
 .pytest_cache/
+
+# Copilot Orchestrator temporary files
+.orchestrator/
+.worktrees/
